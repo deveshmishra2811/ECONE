@@ -26,66 +26,32 @@ export default function HomePage() {
   return (
     <div className="pt-20">
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] bg-[#071A2F] flex items-center overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px'}} />
-        </div>
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#B87333]/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#0F4D2E]/20 rounded-full blur-3xl" />
+      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32 pb-40 overflow-hidden">
+        {/* Background Video */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-          <motion.div initial={{opacity:0,x:-50}} animate={{opacity:1,x:0}} transition={{duration:0.8}}>
-            <div className="flex gap-3 mb-6 flex-wrap">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#0F4D2E]/30 text-green-300 border border-[#0F4D2E]/20">
-                🏫 VNIT-backed / Incubated
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#B87333]/20 text-[#B87333] border border-[#B87333]/30">
-                🔬 Validation Underway
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6" style={{fontFamily:'Outfit,sans-serif'}}>
-              Circular Formwork Panels Built from{' '}
-              <span className="bg-gradient-to-r from-[#B87333] to-[#F7F3EA] bg-clip-text text-transparent">Recycled Plastic</span>
-            </h1>
-            <p className="text-lg text-white/70 mb-8 max-w-xl">
-              Rent smarter formwork, reduce plywood waste, and track cost and carbon impact — with ECONE Panel.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/book-pilot" className="inline-flex items-center px-6 py-3 bg-[#B87333] text-white font-semibold rounded-xl hover:bg-[#7A4A20] transition-colors shadow-lg shadow-[#B87333]/30">
-                Book Pilot
-              </Link>
-              <Link href="/calculate-savings" className="inline-flex items-center px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
-                Calculate Savings
-              </Link>
-              <Link href="/3d-studio" className="inline-flex items-center px-6 py-3 border-2 border-[#0F4D2E]/50 text-green-300 font-semibold rounded-xl hover:bg-[#0F4D2E]/20 transition-colors">
-                View 3D Panel
-              </Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{opacity:0,x:50}} animate={{opacity:1,x:0}} transition={{duration:0.8,delay:0.3}} className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[4/3]">
-              <Image src="/images/13.jpeg" alt="ECONE Formwork Panels" fill className="object-cover" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071A2F]/80 via-[#071A2F]/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="glass rounded-xl p-4">
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <p className="text-2xl font-bold text-white">100+</p>
-                      <p className="text-xs text-white/70">Target Cycles</p>
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-white">11-15</p>
-                      <p className="text-xs text-white/70">kg/m² Weight</p>
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-[#B87333]">₹4,500</p>
-                      <p className="text-xs text-white/70">/m² Target</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        {/* Light Overlay for Contrast */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-0" />
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-normal text-foreground leading-[0.95] tracking-[-2.46px] animate-fade-rise" style={{fontFamily: 'var(--font-display)'}}>
+            Circular formwork panels built from <em className="not-italic text-muted-foreground">recycled plastic.</em>
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay">
+            We're designing tools for sustainable construction, bold builders, and forward thinkers. Amid the chaos of the site, we build circular solutions for sharp workflows and zero waste.
+          </p>
+          <Link href="/book-pilot" className="liquid-glass rounded-full px-14 py-5 text-base font-medium text-foreground mt-12 animate-fade-rise-delay-2 cursor-pointer shadow-sm">
+            Book Pilot
+          </Link>
         </div>
       </section>
 

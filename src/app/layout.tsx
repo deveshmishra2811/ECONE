@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ECONE | Circular Formwork Panels Built from Recycled Plastic',
     description: 'ECONE builds circular formwork panels from recycled plastic for smarter, lighter, and more sustainable construction workflows.',
-    images: ['/images/econe-logo.png'],
+    images: ['/images/01.png'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ECONE | Circular Formwork Panels Built from Recycled Plastic',
     description: 'ECONE builds circular formwork panels from recycled plastic for smarter, lighter, and more sustainable construction workflows.',
-    images: ['/images/econe-logo.png'],
+    images: ['/images/01.png'],
   },
 };
 
