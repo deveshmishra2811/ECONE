@@ -12,6 +12,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">
+              <img src="/images/econe-logo.png" alt="ECONE Logo" className="h-8 w-auto" />
               <span className="text-2xl font-black text-white" style={{fontFamily:'Outfit,sans-serif'}}>{BRAND.name}</span>
             </Link>
           </div>

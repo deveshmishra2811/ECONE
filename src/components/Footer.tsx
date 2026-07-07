@@ -7,7 +7,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           <div className="lg:col-span-2">
-            <span className="text-3xl font-black text-white mb-4 block" style={{fontFamily:'Outfit,sans-serif'}}>{BRAND.name}</span>
+            <div className="flex items-center gap-2 mb-4">
+              <img src="/images/econe-logo.png" alt="ECONE Logo" className="h-10 w-auto" />
+              <span className="text-3xl font-black text-white block" style={{fontFamily:'Outfit,sans-serif'}}>{BRAND.name}</span>
+            </div>
             <p className="text-white/70 mb-6 max-w-sm text-sm leading-relaxed">{BRAND.description}</p>
             <div className="space-y-2 text-white/80 text-sm">
               <p>Email: <a href={`mailto:${CONTACT.email}`} className="hover:text-[#B87333] transition-colors">{CONTACT.email}</a></p>
