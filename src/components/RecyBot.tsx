@@ -39,7 +39,7 @@ export function RecyBot() {
       const lower = text.toLowerCase();
 
       if (lower.includes('what is econe') || lower.includes('about econe')) {
-        botResponse = 'ECONE builds circular formwork panels from recycled plastic. Our panels are designed to replace plywood in concrete construction — offering better reuse, lower waste, and a circular lifecycle.';
+        botResponse = 'ECONE builds circular formwork panels from recycled plastic. Our panels are designed to replace plywood in concrete construction - offering better reuse, lower waste, and a circular lifecycle.';
       } else if (lower.includes('panel') || lower.includes('product')) {
         botResponse = 'The ECONE Panel is a recycled composite formwork panel. Standard size: 800 × 1062.5 mm, Weight: 11–15 kg/m², Target lifecycle: 100+ cycles. Target sale price: ₹4,500/m² or rental at ₹650/m²/month.';
       } else if (lower.includes('application') || lower.includes('use case') || lower.includes('where')) {

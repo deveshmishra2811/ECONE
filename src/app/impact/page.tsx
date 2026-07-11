@@ -129,7 +129,7 @@ export default function ImpactPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-[#1E293B] mb-4">Track Every Cycle</h3>
-                  <p className="text-base text-gray-600 mb-6 leading-relaxed">Future panels will feature scannable tags linking to a digital twin. This passport will track batch origin, current cycle count, repair history, and end-of-life recycling status — ensuring no panel is ever sent to a landfill.</p>
+                  <p className="text-base text-gray-600 mb-6 leading-relaxed">Future panels will feature scannable tags linking to a digital twin. This passport will track batch origin, current cycle count, repair history, and end-of-life recycling status - ensuring no panel is ever sent to a landfill.</p>
                   <div className="flex gap-4">
                     <span className="flex items-center gap-2 text-sm font-semibold text-[#071A2F] bg-gray-100 px-3 py-1.5 rounded-lg">✓ Batch ID</span>
                     <span className="flex items-center gap-2 text-sm font-semibold text-[#071A2F] bg-gray-100 px-3 py-1.5 rounded-lg">✓ Usage Count</span>

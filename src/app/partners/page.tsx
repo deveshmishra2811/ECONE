@@ -22,7 +22,7 @@ export default function PartnersPage() {
 
       <section className="section-padding">
         <div className="max-w-5xl mx-auto px-4 space-y-12">
-          <motion.div {...fadeInUp} className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
+          <motion.div id="rental-fleet-partners" {...fadeInUp} className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block px-4 py-1.5 bg-[#B87333]/10 text-[#B87333] font-bold text-xs uppercase tracking-wider rounded-full mb-4">Rental Shops</span>
@@ -46,7 +46,7 @@ export default function PartnersPage() {
             </div>
           </motion.div>
 
-          <motion.div {...fadeInUp} className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
+          <motion.div id="material-sourcing-partners" {...fadeInUp} className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1 bg-gray-50 rounded-3xl p-10 text-center border border-gray-100 h-full flex flex-col justify-center shadow-inner">
                 <span className="text-7xl mb-6 drop-shadow-md">♻️</span>

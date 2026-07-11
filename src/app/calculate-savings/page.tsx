@@ -83,6 +83,20 @@ export default function CalculateSavingsPage() {
                     <p className="text-sm text-white/50 mt-1">Pending validation</p>
                   </div>
                 </div>
+
+                <div className="bg-[#0B2545] rounded-2xl p-5 mb-8 border border-white/5">
+                  <p className="text-white/80 font-medium text-sm mb-4 border-b border-white/10 pb-2">Total Cost Breakdown</p>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-xs text-white/50 mb-1">{material === 'plywood' ? 'Plywood (100-cycle)' : 'Steel Formwork'}</p>
+                      <p className="text-lg font-semibold text-white/90 line-through decoration-white/30">₹{formatIN(currentCost)}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-[#B87333] mb-1">ECONE Panel (Target)</p>
+                      <p className="text-lg font-semibold text-white">₹{formatIN(newCost)}</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="bg-white/10 rounded-2xl p-6 border border-white/10">
                   <p className="text-white/80 font-medium mb-4">Project Requirements</p>
                   <div className="flex justify-between items-end">

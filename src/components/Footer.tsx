@@ -17,11 +17,11 @@ export function Footer() {
               <p className="mt-2 text-gray-500">{CONTACT.address}</p>
             </div>
           </div>
-          {NAV_ITEMS.slice(0, 3).map((item) => (
+          {NAV_ITEMS.filter((item) => 'children' in item).slice(0, 3).map((item) => (
             <div key={item.label}>
               <h3 className="text-foreground font-semibold mb-4 text-sm uppercase tracking-wider">{item.label}</h3>
               <ul className="space-y-3">
-                {item.children?.slice(0, 6).map((child) => (
+                {'children' in item && (item as any).children?.slice(0, 6).map((child: any) => (
                   <li key={child.label}>
                     <Link href={child.href} className="text-muted-foreground hover:text-foreground text-sm transition-colors">
                       {child.label}

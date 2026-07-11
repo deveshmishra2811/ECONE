@@ -21,10 +21,10 @@ export function Header() {
                 <Link href={item.href} className="text-muted-foreground hover:text-foreground font-medium text-sm transition-colors">
                   {item.label}
                 </Link>
-                {item.children && (
+                {'children' in item && (
                   <div className="absolute left-0 top-full w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 overflow-hidden">
                     <div className="py-2">
-                      {item.children.map((child) => (
+                      {(item as any).children.map((child: any) => (
                         <Link key={child.label} href={child.href} className="block px-4 py-2 text-sm text-[#1E293B] hover:bg-[#F7F3EA] hover:text-[#B87333]">
                           {child.label}
                         </Link>
@@ -62,9 +62,9 @@ export function Header() {
                 <Link href={item.href} className="block text-base font-semibold text-foreground">
                   {item.label}
                 </Link>
-                {item.children && (
+                {'children' in item && (
                   <div className="pl-4 space-y-2 border-l border-gray-200">
-                    {item.children.map((child) => (
+                    {(item as any).children.map((child: any) => (
                       <Link key={child.label} href={child.href} className="block text-sm text-muted-foreground hover:text-foreground">
                         {child.label}
                       </Link>
