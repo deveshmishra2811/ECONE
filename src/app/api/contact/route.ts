@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import clientPromise from '@/lib/mongodb';
 
 export async function POST(request: Request) {
   try {
@@ -9,6 +10,24 @@ export async function POST(request: Request) {
     // Validate required fields
     if (!name || !phone || !email || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Save to MongoDB first
+    try {
+      const client = await clientPromise;
+      const db = client.db('econe');
+      await db.collection('contacts').insertOne({
+        name,
+        phone,
+        email,
+        company: company || null,
+        type: type || 'General Inquiry',
+        message,
+        submittedAt: new Date(),
+      });
+    } catch (dbError) {
+      console.error('Error saving to MongoDB:', dbError);
+      // We don't stop here — email should still attempt to send even if DB save fails
     }
 
     const recipientEmail = process.env.NEXT_PUBLIC_EMAIL;
