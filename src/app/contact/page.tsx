@@ -11,12 +11,41 @@ const fadeInUp = {
 };
 
 export default function ContactPage() {
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 1000);
+    setErrorMessage('');
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      type: formData.get('type'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setStatus('success');
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again or use WhatsApp.');
+    }
   };
 
   return (
@@ -45,17 +74,22 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {status === 'error' && (
+                      <div className="p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl mb-4">
+                        {errorMessage}
+                      </div>
+                    )}
                     <div className="grid md:grid-cols-2 gap-5">
-                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Name *</label><input required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
-                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Phone *</label><input required type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
+                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Name *</label><input name="name" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
+                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Phone *</label><input name="phone" required type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-5">
-                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Email *</label><input required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
-                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Company</label><input className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
+                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Email *</label><input name="email" required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
+                      <div><label className="block text-sm font-semibold mb-1 text-[#1E293B]">Company</label><input name="company" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none" /></div>
                     </div>
                     <div>
                       <label className="block text-sm font-semibold mb-1 text-[#1E293B]">Inquiry Type</label>
-                      <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none text-gray-700">
+                      <select name="type" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none text-gray-700">
                         <option>General Inquiry</option>
                         <option>Request Quote</option>
                         <option>Book Pilot</option>
@@ -65,9 +99,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold mb-1 text-[#1E293B]">Message</label>
-                      <textarea rows={4} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none"></textarea>
+                      <textarea name="message" rows={4} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#B87333] outline-none"></textarea>
                     </div>
-                    <button disabled={status==='loading'} type="submit" className="w-full py-4 bg-[#071A2F] text-white font-bold rounded-xl hover:bg-[#0B2545] transition-colors shadow-lg">
+                    <button disabled={status==='loading'} type="submit" className="w-full py-4 bg-[#071A2F] text-white font-bold rounded-xl hover:bg-[#0B2545] transition-colors shadow-lg disabled:opacity-70">
                       {status === 'loading' ? 'Sending...' : 'Send Message'}
                     </button>
                   </form>
