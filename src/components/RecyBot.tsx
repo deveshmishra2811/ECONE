@@ -68,10 +68,10 @@ export function RecyBot() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 z-50 bg-[#071A2F] text-white w-14 h-14 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center border-2 border-white/10 p-1"
+        className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center overflow-hidden border-2 border-[#071A2F]/10"
         aria-label="Open RecyBot"
       >
-        <img src="/images/recybot-icon.png" alt="RecyBot" className="w-full h-full rounded-full object-contain bg-white" />
+        <img src="/images/recybot-icon.png" alt="RecyBot" className="w-full h-full object-cover" />
       </button>
 
       <AnimatePresence>
@@ -86,7 +86,7 @@ export function RecyBot() {
             {/* Header */}
             <div className="bg-[#071A2F] p-4 text-white flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <img src="/images/recybot-icon.png" alt="RecyBot" className="w-8 h-8 rounded-full object-contain bg-white p-0.5" />
+                <img src="/images/recybot-icon.png" alt="RecyBot" className="w-8 h-8 rounded-full object-cover" />
                 <div>
                   <h3 className="font-semibold leading-tight">RecyBot</h3>
                   <p className="text-xs text-white/70">ECONE AI Assistant</p>
